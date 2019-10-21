@@ -1,0 +1,4 @@
+D:/RTX_Collision/SDK/build/CMakeFiles/ALL_BUILD.dir
+D:/RTX_Collision/SDK/build/CMakeFiles/ZERO_CHECK.dir
+D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/optixRaycasting.dir
+D:/RTX_Collision/SDK/build/sutil/CMakeFiles/sutil_sdk.dir

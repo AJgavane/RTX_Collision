@@ -1,0 +1,36 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake
+D:/RTX_Collision/SDK/CMake/CompilerInfo.cmake
+D:/RTX_Collision/SDK/CMake/ConfigCompilerFlags.cmake
+D:/RTX_Collision/SDK/CMake/FindCUDA.cmake
+D:/RTX_Collision/SDK/CMake/FindCUDA/select_compute_arch.cmake
+D:/RTX_Collision/SDK/CMake/FindMDLWrapper.cmake
+D:/RTX_Collision/SDK/CMake/FindOptiX.cmake
+D:/RTX_Collision/SDK/CMake/FindSUtilGLUT.cmake
+D:/RTX_Collision/SDK/CMake/Macros.cmake
+D:/RTX_Collision/SDK/CMake/sse_support.h.in
+D:/RTX_Collision/SDK/CMakeLists.txt
+D:/RTX_Collision/SDK/build/CMakeFiles/3.15.4/CMakeCCompiler.cmake
+D:/RTX_Collision/SDK/build/CMakeFiles/3.15.4/CMakeCXXCompiler.cmake
+D:/RTX_Collision/SDK/build/CMakeFiles/3.15.4/CMakeRCCompiler.cmake
+D:/RTX_Collision/SDK/build/CMakeFiles/3.15.4/CMakeSystem.cmake
+D:/RTX_Collision/SDK/sampleConfig.h.in

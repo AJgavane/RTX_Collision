@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\RTX_Collision\SDK\build\CMakeFiles\480dced95c7bec0c8e95f85cfde5bbfe\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A5D5F218-F06A-36F6-9C83-D25092AD99D4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\RTX_Collision\SDK\optixRaycasting\OptiXRaycastingContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\RTX_Collision\SDK\optixRaycasting\optixRaycasting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\RTX_Collision\SDK\optixRaycasting\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\RTX_Collision\SDK\optixRaycasting\OptiXRaycastingContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.cu">
+      <Filter>CUDA Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\RTX_Collision\SDK\optixRaycasting\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\RTX_Collision\SDK\optixRaycasting\OptiXRaycastingContext.cu">
+      <Filter>CUDA Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="D:\RTX_Collision\SDK\build\lib\ptx\$(Configuration)\optixRaycasting_generated_optixRaycastingKernels.cu.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CUDA Files">
+      <UniqueIdentifier>{EEE05B81-1F35-3CDA-90E3-7128FE408854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{BD9BD672-BA5D-38B3-BAC1-54F11E3B2DE4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{67FEB621-7BA6-34A5-AB83-8281AF39B66F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B0452C16-CBE5-3151-AB64-FEB144D0656B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

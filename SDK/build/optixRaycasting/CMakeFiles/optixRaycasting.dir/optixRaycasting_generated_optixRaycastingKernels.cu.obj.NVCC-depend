@@ -1,0 +1,114 @@
+optixRaycastingKernels.obj : D:/RTX_Collision/SDK/optixRaycasting/optixRaycastingKernels.cu \
+    C:/Program\ Files/NVIDIA\ GPU\ Computing\ Toolkit/CUDA/v10.1/include/cuda_runtime.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/host_config.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/crtdefs.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/vcruntime.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/sal.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/ConcurrencySal.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/vadefs.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/cstdarg \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/yvals.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/xkeycheck.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/use_ansi.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/stdarg.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/builtin_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/device_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/host_defines.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/driver_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/vector_types.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/limits.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/stddef.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/surface_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/texture_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/library_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/channel_descriptor.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/cuda_runtime_api.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/cuda_device_runtime_api.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/driver_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/vector_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/vector_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/common_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/host_defines.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/string.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_memory.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_memcpy_s.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/errno.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/vcruntime_string.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_wstring.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/time.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_wtime.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/new \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/exception \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/type_traits \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/xstddef \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/cstddef \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/cstdlib \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/stdlib.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_malloc.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_search.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_wstdlib.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/initializer_list \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/xtr1common \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/malloc.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/vcruntime_exception.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/eh.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_terminate.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/vcruntime_new.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/stdio.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_wstdio.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_stdio_config.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/assert.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/math_functions.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/math.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_math.h \
+    C:/Program\ Files\ (x86)/Windows\ Kits/10/include/10.0.17763.0/ucrt/corecrt_math_defines.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/cmath \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/xtgmath.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/math_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/cuda_surface_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/cuda_texture_types.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/device_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/device_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/device_atomic_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/device_atomic_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/device_double_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/device_double_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_20_atomic_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_20_atomic_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_32_atomic_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_32_atomic_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_35_atomic_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_60_atomic_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_60_atomic_functions.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_20_intrinsics.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_20_intrinsics.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_30_intrinsics.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_30_intrinsics.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_32_intrinsics.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_32_intrinsics.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_35_intrinsics.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_61_intrinsics.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/sm_61_intrinsics.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/sm_70_rt.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/crt/sm_70_rt.hpp \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/surface_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/texture_fetch_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/texture_indirect_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/surface_indirect_functions.h \
+    c:/program\ files/nvidia\ gpu\ computing\ toolkit/cuda/v10.1/include/device_launch_parameters.h \
+    d:/rtx_collision/sdk/optixraycasting/Common.h \
+    D:/RTX_Collision/include/optixu/optixu_math_namespace.h \
+    d:/rtx_collision/include/optixu/../optix.h \
+    d:/rtx_collision/include/optix_device.h \
+    d:/rtx_collision/include/internal/optix_datatypes.h \
+    d:/rtx_collision/include/internal/../optixu/optixu_vector_types.h \
+    C:/Program\ Files/NVIDIA\ GPU\ Computing\ Toolkit/CUDA/v10.1/include/vector_types.h \
+    d:/rtx_collision/include/internal/optix_declarations.h \
+    d:/rtx_collision/include/internal/optix_internal.h \
+    d:/rtx_collision/include/internal/optix_defines.h \
+    d:/rtx_collision/include/internal/../optix_sizet.h \
+    d:/rtx_collision/include/internal/../optixu/optixu_vector_functions.h \
+    C:/Program\ Files/NVIDIA\ GPU\ Computing\ Toolkit/CUDA/v10.1/include/vector_functions.h \
+    C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio\ 14.0/VC/bin/amd64/../../../VC/INCLUDE/cstdio \
+    d:/rtx_collision/sdk/optixraycasting/optixRaycastingKernels.h

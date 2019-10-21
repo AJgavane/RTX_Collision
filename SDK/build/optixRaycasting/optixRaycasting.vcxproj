@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A9093238-A62B-3F83-B57F-B763FF6488C1}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>optixRaycasting</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RTX_Collision\SDK\build\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">optixRaycasting.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">optixRaycasting</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RTX_Collision\SDK\build\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">optixRaycasting.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">optixRaycasting</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RTX_Collision\SDK\build\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">optixRaycasting.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">optixRaycasting</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RTX_Collision\SDK\build\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">optixRaycasting.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">optixRaycasting</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4355;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Debug\sutil_sdk.lib;D:\RTX_Collision\lib64\optix.6.0.0.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\cudart_static.lib;..\..\support\freeglut\win64\Release\freeglut.lib;opengl32.lib;glu32.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\nvrtc.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RTX_Collision/SDK/build/lib/Debug/optixRaycasting.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RTX_Collision/SDK/build/bin/Debug/optixRaycasting.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4355;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Release\sutil_sdk.lib;D:\RTX_Collision\lib64\optix.6.0.0.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\cudart_static.lib;..\..\support\freeglut\win64\Release\freeglut.lib;opengl32.lib;glu32.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\nvrtc.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RTX_Collision/SDK/build/lib/Release/optixRaycasting.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RTX_Collision/SDK/build/bin/Release/optixRaycasting.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4355;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\MinSizeRel\sutil_sdk.lib;D:\RTX_Collision\lib64\optix.6.0.0.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\cudart_static.lib;..\..\support\freeglut\win64\Release\freeglut.lib;opengl32.lib;glu32.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\nvrtc.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RTX_Collision/SDK/build/lib/MinSizeRel/optixRaycasting.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RTX_Collision/SDK/build/bin/MinSizeRel/optixRaycasting.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4355;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RTX_Collision\include;D:\RTX_Collision\SDK\sutil;D:\RTX_Collision\SDK;D:\RTX_Collision\include\optixu;D:\RTX_Collision\SDK\support\mdl-sdk\include;D:\RTX_Collision\SDK\build;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\RelWithDebInfo\sutil_sdk.lib;D:\RTX_Collision\lib64\optix.6.0.0.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\cudart_static.lib;..\..\support\freeglut\win64\Release\freeglut.lib;opengl32.lib;glu32.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\nvrtc.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RTX_Collision/SDK/build/lib/RelWithDebInfo/optixRaycasting.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RTX_Collision/SDK/build/bin/RelWithDebInfo/optixRaycasting.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.cu">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building NVCC (Device) object lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=OFF -D check_dependencies:BOOL=ON -D "CCBIN:PATH=$(VCInstallDir)bin" -D build_configuration:STRING=$(ConfigurationName) -D generated_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj -D generated_cubin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.cubin.txt -D generated_fatbin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.fatbin.txt -P D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/optixRaycasting.dir//optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\ConcurrencySal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cmath;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\crtdefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdarg;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdio;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdlib;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\eh.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\exception;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\initializer_list;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\limits.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\new;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\sal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\stdarg.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\type_traits;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\use_ansi.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vadefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_new.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_string.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xkeycheck.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtgmath.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtr1common;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\yvals.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\assert.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math_defines.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memcpy_s.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memory.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_search.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_stdio_config.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_terminate.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstring.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wtime.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\errno.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stddef.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\time.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\builtin_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\channel_descriptor.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\common_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_config.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_defines.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_device_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_launch_parameters.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\library_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_fetch_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_types.h;D:\RTX_Collision\SDK\optixRaycasting\Common.h;D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.h;D:\RTX_Collision\include\internal\optix_datatypes.h;D:\RTX_Collision\include\internal\optix_declarations.h;D:\RTX_Collision\include\internal\optix_defines.h;D:\RTX_Collision\include\internal\optix_internal.h;D:\RTX_Collision\include\optix.h;D:\RTX_Collision\include\optix_device.h;D:\RTX_Collision\include\optix_sizet.h;D:\RTX_Collision\include\optixu\optixu_math_namespace.h;D:\RTX_Collision\include\optixu\optixu_vector_functions.h;D:\RTX_Collision\include\optixu\optixu_vector_types.h;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RTX_Collision\SDK\build\lib\ptx\$(Configuration)\optixRaycasting_generated_optixRaycastingKernels.cu.obj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building NVCC (Device) object lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=OFF -D check_dependencies:BOOL=ON -D "CCBIN:PATH=$(VCInstallDir)bin" -D build_configuration:STRING=$(ConfigurationName) -D generated_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj -D generated_cubin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.cubin.txt -D generated_fatbin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.fatbin.txt -P D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/optixRaycasting.dir//optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\ConcurrencySal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cmath;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\crtdefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdarg;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdio;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdlib;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\eh.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\exception;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\initializer_list;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\limits.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\new;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\sal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\stdarg.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\type_traits;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\use_ansi.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vadefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_new.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_string.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xkeycheck.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtgmath.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtr1common;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\yvals.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\assert.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math_defines.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memcpy_s.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memory.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_search.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_stdio_config.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_terminate.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstring.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wtime.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\errno.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stddef.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\time.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\builtin_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\channel_descriptor.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\common_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_config.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_defines.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_device_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_launch_parameters.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\library_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_fetch_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_types.h;D:\RTX_Collision\SDK\optixRaycasting\Common.h;D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.h;D:\RTX_Collision\include\internal\optix_datatypes.h;D:\RTX_Collision\include\internal\optix_declarations.h;D:\RTX_Collision\include\internal\optix_defines.h;D:\RTX_Collision\include\internal\optix_internal.h;D:\RTX_Collision\include\optix.h;D:\RTX_Collision\include\optix_device.h;D:\RTX_Collision\include\optix_sizet.h;D:\RTX_Collision\include\optixu\optixu_math_namespace.h;D:\RTX_Collision\include\optixu\optixu_vector_functions.h;D:\RTX_Collision\include\optixu\optixu_vector_types.h;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RTX_Collision\SDK\build\lib\ptx\$(Configuration)\optixRaycasting_generated_optixRaycastingKernels.cu.obj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building NVCC (Device) object lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=OFF -D check_dependencies:BOOL=ON -D "CCBIN:PATH=$(VCInstallDir)bin" -D build_configuration:STRING=$(ConfigurationName) -D generated_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj -D generated_cubin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.cubin.txt -D generated_fatbin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.fatbin.txt -P D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/optixRaycasting.dir//optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\ConcurrencySal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cmath;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\crtdefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdarg;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdio;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdlib;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\eh.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\exception;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\initializer_list;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\limits.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\new;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\sal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\stdarg.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\type_traits;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\use_ansi.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vadefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_new.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_string.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xkeycheck.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtgmath.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtr1common;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\yvals.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\assert.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math_defines.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memcpy_s.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memory.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_search.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_stdio_config.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_terminate.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstring.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wtime.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\errno.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stddef.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\time.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\builtin_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\channel_descriptor.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\common_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_config.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_defines.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_device_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_launch_parameters.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\library_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_fetch_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_types.h;D:\RTX_Collision\SDK\optixRaycasting\Common.h;D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.h;D:\RTX_Collision\include\internal\optix_datatypes.h;D:\RTX_Collision\include\internal\optix_declarations.h;D:\RTX_Collision\include\internal\optix_defines.h;D:\RTX_Collision\include\internal\optix_internal.h;D:\RTX_Collision\include\optix.h;D:\RTX_Collision\include\optix_device.h;D:\RTX_Collision\include\optix_sizet.h;D:\RTX_Collision\include\optixu\optixu_math_namespace.h;D:\RTX_Collision\include\optixu\optixu_vector_functions.h;D:\RTX_Collision\include\optixu\optixu_vector_types.h;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RTX_Collision\SDK\build\lib\ptx\$(Configuration)\optixRaycasting_generated_optixRaycastingKernels.cu.obj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building NVCC (Device) object lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=OFF -D check_dependencies:BOOL=ON -D "CCBIN:PATH=$(VCInstallDir)bin" -D build_configuration:STRING=$(ConfigurationName) -D generated_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj -D generated_cubin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.cubin.txt -D generated_fatbin_file:STRING=D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)/optixRaycasting_generated_optixRaycastingKernels.cu.obj.fatbin.txt -P D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/optixRaycasting.dir//optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\ConcurrencySal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cmath;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\crtdefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdarg;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdio;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\cstdlib;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\eh.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\exception;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\initializer_list;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\limits.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\new;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\sal.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\stdarg.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\type_traits;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\use_ansi.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vadefs.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_exception.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_new.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vcruntime_string.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xkeycheck.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xstddef;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtgmath.h;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xtr1common;C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\yvals.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\assert.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_math_defines.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memcpy_s.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_memory.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_search.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_stdio_config.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_terminate.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wstring.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\corecrt_wtime.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\errno.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\malloc.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\math.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stddef.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdlib.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\time.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\builtin_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\channel_descriptor.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\common_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_double_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\device_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_config.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\host_defines.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\math_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\crt\sm_70_rt.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_device_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_runtime_api.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\cuda_texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_launch_parameters.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\device_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\driver_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\library_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_20_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_30_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_32_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_35_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_60_atomic_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\sm_61_intrinsics.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\surface_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_fetch_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_indirect_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\texture_types.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.h;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_functions.hpp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\vector_types.h;D:\RTX_Collision\SDK\optixRaycasting\Common.h;D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.h;D:\RTX_Collision\include\internal\optix_datatypes.h;D:\RTX_Collision\include\internal\optix_declarations.h;D:\RTX_Collision\include\internal\optix_defines.h;D:\RTX_Collision\include\internal\optix_internal.h;D:\RTX_Collision\include\optix.h;D:\RTX_Collision\include\optix_device.h;D:\RTX_Collision\include\optix_sizet.h;D:\RTX_Collision\include\optixu\optixu_math_namespace.h;D:\RTX_Collision\include\optixu\optixu_vector_functions.h;D:\RTX_Collision\include\optixu\optixu_vector_types.h;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RTX_Collision\SDK\build\lib\ptx\$(Configuration)\optixRaycasting_generated_optixRaycastingKernels.cu.obj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\RTX_Collision\SDK\optixRaycasting\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/RTX_Collision/SDK/optixRaycasting/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/RTX_Collision/SDK -BD:/RTX_Collision/SDK/build --check-stamp-file D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RTX_Collision\SDK\CMake\FindCUDA\run_nvcc.cmake;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/RTX_Collision/SDK/optixRaycasting/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/RTX_Collision/SDK -BD:/RTX_Collision/SDK/build --check-stamp-file D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RTX_Collision\SDK\CMake\FindCUDA\run_nvcc.cmake;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/RTX_Collision/SDK/optixRaycasting/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/RTX_Collision/SDK -BD:/RTX_Collision/SDK/build --check-stamp-file D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RTX_Collision\SDK\CMake\FindCUDA\run_nvcc.cmake;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/RTX_Collision/SDK/optixRaycasting/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/RTX_Collision/SDK -BD:/RTX_Collision/SDK/build --check-stamp-file D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RTX_Collision\SDK\CMake\FindCUDA\run_nvcc.cmake;D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\optixRaycasting.dir\optixRaycasting_generated_optixRaycastingKernels.cu.obj.depend;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RTX_Collision\SDK\build\optixRaycasting\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\RTX_Collision\SDK\optixRaycasting\Common.h" />
+    <ClCompile Include="D:\RTX_Collision\SDK\optixRaycasting\OptiXRaycastingContext.cpp" />
+    <ClInclude Include="D:\RTX_Collision\SDK\optixRaycasting\OptiXRaycastingContext.h" />
+    <None Include="D:\RTX_Collision\SDK\optixRaycasting\OptiXRaycastingContext.cu" />
+    <ClCompile Include="D:\RTX_Collision\SDK\optixRaycasting\optixRaycasting.cpp" />
+    <ClInclude Include="D:\RTX_Collision\SDK\optixRaycasting\optixRaycastingKernels.h" />
+    <Object Include="D:\RTX_Collision\SDK\build\lib\ptx\$(Configuration)\optixRaycasting_generated_optixRaycastingKernels.cu.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\RTX_Collision\SDK\build\ZERO_CHECK.vcxproj">
+      <Project>{09830BAD-79DD-3A50-AA3C-856939E632A9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\RTX_Collision\SDK\build\sutil\sutil_sdk.vcxproj">
+      <Project>{1C7398AB-7929-3C07-BE05-7D5BEEEA8B13}</Project>
+      <Name>sutil_sdk</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

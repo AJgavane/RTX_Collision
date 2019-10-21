@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+D:/RTX_Collision/SDK/CMake/FindCUDA/run_nvcc.cmake
+D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles/optixRaycasting.dir/optixRaycasting_generated_optixRaycastingKernels.cu.obj.depend
+D:/RTX_Collision/SDK/optixRaycasting/CMakeLists.txt
