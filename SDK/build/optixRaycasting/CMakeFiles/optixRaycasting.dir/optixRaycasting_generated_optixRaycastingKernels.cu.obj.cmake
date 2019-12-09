@@ -67,7 +67,7 @@ set(cmake_dependency_file "D:/RTX_Collision/SDK/build/optixRaycasting/CMakeFiles
 set(CUDA_make2cmake "D:/RTX_Collision/SDK/CMake/FindCUDA/make2cmake.cmake") # path
 set(CUDA_parse_cubin "D:/RTX_Collision/SDK/CMake/FindCUDA/parse_cubin.cmake") # path
 set(build_cubin OFF) # bool
-set(CUDA_HOST_COMPILER "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/amd64/cl.exe") # path
+set(CUDA_HOST_COMPILER "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe") # path
 # We won't actually use these variables for now, but we need to set this, in
 # order to force this file to be run again if it changes.
 set(generated_file_path "D:/RTX_Collision/SDK/build/lib/ptx/$(Configuration)") # path

@@ -75,7 +75,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/RTX_Collision
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/OptiX-Samples
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/link.exe
@@ -110,7 +110,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=RTX_Collision
+CMAKE_PROJECT_NAME:STATIC=OptiX-Samples
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -227,7 +227,7 @@ CUDA_GENERATE_DEPENDENCIES_DURING_CONFIGURE:BOOL=OFF
 CUDA_HOST_COMPILATION_CPP:BOOL=ON
 
 //Host side compiler used by NVCC
-CUDA_HOST_COMPILER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/amd64/cl.exe
+CUDA_HOST_COMPILER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe
 
 //Path to a program.
 CUDA_NVASM_EXECUTABLE:FILEPATH=CUDA_NVASM_EXECUTABLE-NOTFOUND
@@ -350,17 +350,17 @@ OPENGL_gl_LIBRARY:STRING=opengl32
 //GLU library for win32
 OPENGL_glu_LIBRARY:STRING=glu32
 
+//Value Computed by CMake
+OptiX-Samples_BINARY_DIR:STATIC=D:/RTX_Collision/SDK/build
+
+//Value Computed by CMake
+OptiX-Samples_SOURCE_DIR:STATIC=D:/RTX_Collision/SDK
+
 //Path to a file.
 OptiX_INCLUDE:PATH=D:/RTX_Collision/include
 
 //Path to OptiX installed location.
 OptiX_INSTALL_DIR:PATH=D:/RTX_Collision/SDK/..
-
-//Value Computed by CMake
-RTX_Collision_BINARY_DIR:STATIC=D:/RTX_Collision/SDK/build
-
-//Value Computed by CMake
-RTX_Collision_SOURCE_DIR:STATIC=D:/RTX_Collision/SDK
 
 //Path to a file.
 mdl_wrapper_INCLUDE_DIR:PATH=D:/RTX_Collision/SDK/support/mdl_wrapper/include
