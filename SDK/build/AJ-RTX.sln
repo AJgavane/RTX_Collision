@@ -60,7 +60,7 @@ Global
 		{1C7398AB-7929-3C07-BE05-7D5BEEEA8B13}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4A021C7B-65C7-3B32-ADBB-EE96F5B13DAD}
+		SolutionGuid = {3C852B0D-29BF-3803-A64D-2B28C402EB2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
 	EndGlobalSection

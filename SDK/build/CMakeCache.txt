@@ -14,6 +14,12 @@
 # EXTERNAL cache entries
 ########################
 
+//Value Computed by CMake
+AJ-RTX_BINARY_DIR:STATIC=D:/RTX_Collision/SDK/build
+
+//Value Computed by CMake
+AJ-RTX_SOURCE_DIR:STATIC=D:/RTX_Collision/SDK
+
 //Choose the type of build, options are: Debug Release RelWithDebInfo
 // MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=Release
@@ -75,7 +81,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/OptiX-Samples
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/AJ-RTX
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/link.exe
@@ -110,7 +116,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=OptiX-Samples
+CMAKE_PROJECT_NAME:STATIC=AJ-RTX
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -349,12 +355,6 @@ OPENGL_gl_LIBRARY:STRING=opengl32
 
 //GLU library for win32
 OPENGL_glu_LIBRARY:STRING=glu32
-
-//Value Computed by CMake
-OptiX-Samples_BINARY_DIR:STATIC=D:/RTX_Collision/SDK/build
-
-//Value Computed by CMake
-OptiX-Samples_SOURCE_DIR:STATIC=D:/RTX_Collision/SDK
 
 //Path to a file.
 OptiX_INCLUDE:PATH=D:/RTX_Collision/include
