@@ -36,10 +36,11 @@
 
 struct Ray
 {
-  optix::float3 origin;
-  float  tmin;
-  optix::float3 dir;
-  float  tmax;
+	optix::float3 origin;
+	//optix::float3 dest;
+	float  tmin;
+	optix::float3 dir;
+	float  tmax;
 };
 
 

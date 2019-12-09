@@ -129,10 +129,10 @@ rtTextureSampler<uchar4, 2, cudaReadModeNormalizedFloat> mask_sampler;
 
 RT_PROGRAM void any_hit()
 {
-    float4 mask = tex2D( mask_sampler, hit_attr.texcoord.x, hit_attr.texcoord.y );
+    /*float4 mask = tex2D( mask_sampler, hit_attr.texcoord.x, hit_attr.texcoord.y );
     if ( mask.x < 0.5f ) {
       rtIgnoreIntersection(); // make surface transparent
-    }
+    }*/
 }
 
 
@@ -155,7 +155,7 @@ RT_PROGRAM void ray_gen()
 {
     Hit hit_prd;
     hit_prd.t           = -1.0f;
-    hit_prd.triId       = -1;
+    hit_prd.triId       = -100;
     hit_prd.u           = 0.0f;
     hit_prd.v           = 0.0f;
     hit_prd.geom_normal = optix::make_float3(1, 0, 0);
@@ -180,8 +180,8 @@ RT_PROGRAM void exception()
   const unsigned int code = rtGetExceptionCode();
   rtPrintf( "Caught exception 0x%X at launch index (%d)\n", code, launch_index );
   Hit hit_prd;
-  hit_prd.t           = -1.0f;
-  hit_prd.triId       = -1;
+  hit_prd.t           = -100.0f;
+  hit_prd.triId       = -100;
   hit_prd.u           = 0.0f;
   hit_prd.v           = 0.0f;
   hit_prd.geom_normal = optix::make_float3(1, 0, 0);

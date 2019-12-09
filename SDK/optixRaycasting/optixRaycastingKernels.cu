@@ -69,6 +69,27 @@ void createRaysOrthoOnDevice( Ray* rays_device, int width, int height, float3 bb
   createRaysOrthoKernel<<<gridSize,blockSize>>>( rays_device, width, height, x0, y0, z, dx, dy );
 }
 
+__global__ void CreateRaysKernel(Ray* rays, int width, int height)
+{
+	const int rayx = threadIdx.x + blockIdx.x*blockDim.x;
+	const int rayy = threadIdx.y + blockIdx.y*blockDim.y;
+	if( rayx >= width || rayy >= height )
+		return;
+  
+	  const int idx = rayx + rayy*width;
+	  rays[idx].origin = make_float3( 6.452f ,1.461f, 0.06142f );
+	  rays[idx].tmin = 0.0f;
+	  rays[idx].dir =   make_float3( -35.05f, 10.74f, 15.93f) - rays[idx].origin;
+	  rays[idx].tmax = 1.0;
+}
+
+void CreateRaysDevice(Ray* rays_device, int width, int height)
+{
+	dim3 blockSize( 32, 16 );
+	dim3 gridSize( idivCeil( width, blockSize.x ), idivCeil( height, blockSize.y ) );
+	CreateRaysKernel<<<gridSize,blockSize>>>( rays_device, width, height);
+}
+
 
 __global__ void translateRaysKernel( Ray* rays, int count, float3 offset)
 {
