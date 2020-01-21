@@ -41,11 +41,11 @@ const char* const CUDA_SOURCE = "OptiXRaycastingContext.cu";
 OptiXRaycastingContext::OptiXRaycastingContext()
 {
   m_context = optix::Context::create();
-  m_context->setRayTypeCount( 1 );
+  m_context->setRayTypeCount( 2 );
   m_context->setEntryPointCount( 1 );
 
   // Set small stack for a simple kernel without much shading.
-  m_context->setStackSize( 200 );
+  m_context->setStackSize( 2000 );
 
   // Limit to single GPU for this sample, to simplify CUDA interop.
   const std::vector<int> enabled_devices = m_context->getEnabledDevices();
@@ -71,18 +71,22 @@ OptiXRaycastingContext::OptiXRaycastingContext()
 
   // Closest hit program for returning geometry attributes.  No shading.
   optix::Program closest_hit = m_context->createProgramFromPTXString( ptx, "closest_hit" );
-  m_material->setClosestHitProgram( /*ray type*/ 0, closest_hit );
+  m_material->setClosestHitProgram( 0, closest_hit );
 
   // Raygen program that reads rays directly from an input buffer.
   optix::Program ray_gen = m_context->createProgramFromPTXString( ptx, "ray_gen" );
-  m_context->setRayGenerationProgram( /*entry point*/ 0, ray_gen );
+  m_context->setRayGenerationProgram(  0, ray_gen );
 
+  // ANy hit
+   optix::Program m_any_hit = m_context->createProgramFromPTXString(ptx, "any_hit");
+  m_material->setAnyHitProgram(1, m_any_hit);
+	
   // Exception program for debugging
-  /*
+  
   optix::Program exception_program = m_context->createProgramFromPTXString( ptx, "exception" );
   m_context->setExceptionProgram( 0, exception_program );
   m_context->setPrintEnabled( true );
-  */
+ // */
 
 }
 
@@ -127,7 +131,7 @@ void OptiXRaycastingContext::setMask( const char* texture_filename )
   // Any-hit program for masking
   const char *ptx = sutil::getPtxString( SAMPLE_NAME, CUDA_SOURCE );
   optix::Program any_hit = m_context->createProgramFromPTXString( ptx, "any_hit" );
-  m_material->setAnyHitProgram( /*ray type*/ 0, any_hit );
+  m_material->setAnyHitProgram( /*ray type*/ 1, any_hit );
 
   optix::TextureSampler sampler = sutil::loadTexture( m_context, texture_filename, optix::make_float3(1.0f, 1.0f, 1.0f) );
   m_context[ "mask_sampler" ]->set( sampler );
@@ -135,6 +139,7 @@ void OptiXRaycastingContext::setMask( const char* texture_filename )
 
 void OptiXRaycastingContext::setRaysDevicePointer( const Ray* rays, size_t n )
 {
+	std::cout << "Size of Rays: " << n << std::endl;
   if ( m_rays ) m_rays->destroy();
   m_rays = m_context->createBuffer( RT_BUFFER_INPUT_OUTPUT | RT_BUFFER_GPU_LOCAL, RT_FORMAT_USER, n );
   m_rays->setElementSize( sizeof(Ray) );
@@ -144,6 +149,7 @@ void OptiXRaycastingContext::setRaysDevicePointer( const Ray* rays, size_t n )
 
 void OptiXRaycastingContext::setHitsDevicePointer( Hit* hits, size_t n )
 {
+	std::cout << "Size of Hit: " << sizeof(Hit) << std::endl;
   if ( m_hits ) m_hits->destroy();
   m_hits = m_context->createBuffer( RT_BUFFER_INPUT_OUTPUT | RT_BUFFER_GPU_LOCAL, RT_FORMAT_USER, n );
   m_hits->setElementSize( sizeof(Hit) );
@@ -155,6 +161,6 @@ void OptiXRaycastingContext::execute()
 {
   RTsize n;
   m_rays->getSize(n);
-  m_context->launch( /*entry point*/ 0, n );
+  m_context->launch( 0, n );
 }
 

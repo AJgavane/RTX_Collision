@@ -40,5 +40,5 @@ void translateRaysOnDevice( Ray* rays_device, int count, float3 offset );
 
 void shadeHitsOnDevice( float3* image_device, int count, const Hit* hits_device );
 
-void CreateRaysDevice(Ray* rays_device, int width, int height);
+void CreateRaysDevice(Ray* rays_device, int width, int height, int depth);
 

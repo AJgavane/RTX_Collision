@@ -716,7 +716,9 @@ void MeshLoader::loadMesh( Mesh& mesh, const float* load_xform )
 
 void loadMesh( const std::string& filename, Mesh& mesh, const float* xform )
 {
+	// Checks the extension of the input file: OBJ or PLY
     MeshLoader loader( filename );
+	
     loader.scanMesh( mesh );
     allocMesh( mesh );
     loader.loadMesh( mesh, xform );

@@ -29,28 +29,24 @@
 #pragma once
 
 #include <optixu/optixu_math_namespace.h>
+#define NUM_OF_HITS 20
 
 //
 // Common definitions shared by host and device code
 //
-
 struct Ray
 {
 	optix::float3 origin;
+	optix::float3 dir;
 	//optix::float3 dest;
 	float  tmin;
-	optix::float3 dir;
 	float  tmax;
 };
 
 
 struct Hit
 {
-  float t;
-  int   triId;
-  float u;
-  float v;
-  optix::float3 geom_normal;
-  optix::float2 texcoord;
+  float t[NUM_OF_HITS];
+  int   triId[NUM_OF_HITS];
+  int	nhits;
 };
-

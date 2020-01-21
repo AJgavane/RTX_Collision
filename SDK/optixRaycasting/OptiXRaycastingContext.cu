@@ -62,23 +62,10 @@ RT_PROGRAM void intersect( int primIdx )
         if(  rtPotentialIntersection( t ) )
         {
             Hit h;
-            h.t = t;
-            h.triId = primIdx;
-            h.u = beta;
-            h.v = gamma;
-            h.geom_normal = optix::normalize( normal );
-
-            if ( texcoord_buffer.size() == 0 ) {
-              h.texcoord = optix::make_float2( 0.0f, 0.0f ); 
-            } else {
-              const float2 t0 = texcoord_buffer[ v_idx.x ];
-              const float2 t1 = texcoord_buffer[ v_idx.y ];
-              const float2 t2 = texcoord_buffer[ v_idx.z ];
-              h.texcoord = t1*beta + t2*gamma + t0*(1.0f-beta-gamma);
-            }
-
-            hit_attr = h;
-
+            h.t[0] = t;
+            h.triId[0] = primIdx;
+        	h.nhits = 1;
+        	hit_attr = h;
             rtReportIntersection( /*material index*/ 0 );
         }
     }
@@ -125,14 +112,24 @@ RT_PROGRAM void closest_hit()
 //
 //------------------------------------------------------------------------------
 
-rtTextureSampler<uchar4, 2, cudaReadModeNormalizedFloat> mask_sampler;
+//rtTextureSampler<uchar4, 2, cudaReadModeNormalizedFloat> mask_sampler;
 
 RT_PROGRAM void any_hit()
 {
-    /*float4 mask = tex2D( mask_sampler, hit_attr.texcoord.x, hit_attr.texcoord.y );
-    if ( mask.x < 0.5f ) {
-      rtIgnoreIntersection(); // make surface transparent
-    }*/
+	
+	bool flag = true;
+	int i = 0;
+	for(i = 0; flag == true && i < NUM_OF_HITS; ++i)
+	{
+		if(hit_prd.t[i] == -1){
+			hit_prd.nhits += 1;
+			hit_prd.t[i] = hit_attr.t[0];
+			hit_prd.triId[i] = hit_attr.triId[0];
+			flag = false;
+		}		
+	}//*/
+	rtPrintf("%d = %d\n", i, hit_attr.triId[0]);
+	rtIgnoreIntersection();	
 }
 
 
@@ -154,18 +151,20 @@ rtBuffer<Ray, 1>  rays;
 RT_PROGRAM void ray_gen()
 {
     Hit hit_prd;
-    hit_prd.t           = -1.0f;
-    hit_prd.triId       = -100;
-    hit_prd.u           = 0.0f;
-    hit_prd.v           = 0.0f;
-    hit_prd.geom_normal = optix::make_float3(1, 0, 0);
-
+	for(int i = 0; i < NUM_OF_HITS; i++)
+	{
+		hit_prd.t[i]           = -1.0f;
+		hit_prd.triId[i]       = -1;
+	}    
+    hit_prd.nhits = 0;
     Ray ray = rays[launch_index];
     rtTrace( top_object,
-             optix::make_Ray( ray.origin, ray.dir, 0, ray.tmin, ray.tmax ),
+             optix::make_Ray( ray.origin, ray.dir, 1, ray.tmin, ray.tmax ),
              hit_prd );
-
     hits[ launch_index ] = hit_prd;
+	for(int i = 0; i < NUM_OF_HITS; i++)
+		if(hit_prd.t[i] > 0)
+			rtPrintf("%d: t%d: %f \n", launch_index, i, hit_prd.t[i]);
 }
 
 //------------------------------------------------------------------------------
@@ -180,11 +179,12 @@ RT_PROGRAM void exception()
   const unsigned int code = rtGetExceptionCode();
   rtPrintf( "Caught exception 0x%X at launch index (%d)\n", code, launch_index );
   Hit hit_prd;
-  hit_prd.t           = -100.0f;
-  hit_prd.triId       = -100;
-  hit_prd.u           = 0.0f;
-  hit_prd.v           = 0.0f;
-  hit_prd.geom_normal = optix::make_float3(1, 0, 0);
-  hits[ launch_index ] = hit_prd;
+	for(int i = 0; i < NUM_OF_HITS; i++)
+	{
+		hit_prd.t[i]           = -100.0f;
+		hit_prd.triId[i]       = -100;
+	}
+	hit_prd.nhits = -1;
+   hits[ launch_index ] = hit_prd;
 }
 

@@ -47,6 +47,10 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <sstream>
 
 
 void printUsageAndExit(const char* argv0)
@@ -88,6 +92,10 @@ void writePPM(const char* filename, const float* image, int width, int height)
 }
 
 
+void PrintRays(Ray* rays_device, int sizeOfInput);
+
+void PrintHits(Hit* hit, Ray* rays_device, int sizeOfInput);
+
 int main(int argc, char** argv)
 {
 	std::string objFilename;
@@ -106,7 +114,7 @@ int main(int argc, char** argv)
 		{
 			objFilename = argv[++i];
 		}
-		else if ((arg == "--mask") && i + 1 < argc)
+		else if (arg == "--mask" && i + 1 < argc)
 		{
 			maskFilename = argv[++i];
 		}
@@ -134,14 +142,12 @@ int main(int argc, char** argv)
 		//
 		// Create Context
 		//
-
 		OptiXRaycastingContext context;
-
 
 		//
 		// Create model on host
 		//
-		objFilename = std::string(sutil::samplesDir()) + "/data/streetscene.obj";
+		objFilename = std::string(sutil::samplesDir()) + "/data/WashingtonDC.obj";
 		std::cout << objFilename << std::endl;
 		std::cerr << "Loading model: " << objFilename << std::endl;
 		HostMesh model(objFilename);
@@ -151,7 +157,6 @@ int main(int argc, char** argv)
 		//
 		// Create CUDA buffers for rays and hits
 		//
-
 		const optix::float3& bbox_min = *reinterpret_cast<const optix::float3*>(model.bbox_min);
 		const optix::float3& bbox_max = *reinterpret_cast<const optix::float3*>(model.bbox_max);
 		const optix::float3 bbox_span = bbox_max - bbox_min;
@@ -166,129 +171,74 @@ int main(int argc, char** argv)
 
 		// Populate rays using CUDA kernel
 		// casting one ray
+
+		// Read rays from inputfile and copy to cuda.
+		std::string filename = std::string(sutil::samplesDir()) + "/data/input.csv";
+		std::fstream fin;
+		fin.open(filename, std::ios::in);
+		std::vector <std::string> row;
+		std::string line, word, temp;
+		std::vector <Ray> rays_host;
+		getline(fin, line);
+		while (getline(fin, line))
+		{
+			row.clear();
+			std::stringstream s(line);
+			while( getline(s, word, ',') )
+			{
+				row.push_back(word);
+			}
+			optix::float3 origin = optix::make_float3(stof(row[0]), stof(row[1]), stof(row[2]));
+			optix::float3 dest = optix::make_float3(stof(row[3]), stof(row[4]), stof(row[5]));
+			Ray  r;
+			r.origin = origin;
+			r.dir = dest - origin;
+			r.tmin = 0.0f; r.tmax = 1.0f;
+			rays_host.push_back(r);
+		}
+		fin.close();
+		// Copy to cuda
 		Ray* rays_d = NULL;
-		width = 1; height = 1;
-	    err = cudaMalloc( &rays_d, sizeof(Ray)*width*height );
-	    if( err != cudaSuccess )
-	    {
-	      printf( "cudaMalloc failed (%s): %s\n", cudaGetErrorName( err ), cudaGetErrorString( err ) );
-	      exit( 1 );
-	    }
-
-		CreateRaysDevice( rays_d, width, height);
-	    err = cudaGetLastError();
-	    if( err != cudaSuccess )
-	    {
-	      printf( "Error while creating rays on device (%s): %s\n", cudaGetErrorName( err ), cudaGetErrorString( err ) );
-	      exit( 1 );
-	    }
+		int sizeOfInput = rays_host.size();	
+		err = cudaMalloc((void**)&rays_d, sizeof(Ray)*sizeOfInput);
+		if (err != cudaSuccess)
+		{
+			printf("cudaMalloc failed (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
+			exit(1);
+		}
 		
-		context.setRaysDevicePointer(rays_d, size_t(width*height));
+		cudaMemcpy(rays_d, &rays_host[0], sizeof(Ray)*sizeOfInput, cudaMemcpyHostToDevice);
+		
+		//PrintRays(rays_d, sizeOfInput);
+		context.setRaysDevicePointer(rays_d, size_t(sizeOfInput));
 
+		//////////////////Init hits/////////////////////////
+		Hit h;
+		for(int i = 0; i < NUM_OF_HITS; i++)
+		{
+			h.t[i] = 0.0; h.triId[i] = 0;
+		}
+		h.nhits = 1;
+		
 		Hit* hits_d = NULL;
-		err = cudaMalloc(&hits_d, sizeof(Hit)*width*height);
+		std::cout << "h size: " << sizeof(h) << std::endl;
+		err = cudaMalloc(&hits_d, sizeof(Hit)*sizeOfInput);
+		std::cout << "hits_d size: " << sizeof(Hit)*sizeOfInput << std::endl;
+
 		if (err != cudaSuccess)
 		{
 			printf("cudaMalloc failed (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
 			exit(1);
 		}
-		context.setHitsDevicePointer(hits_d, size_t(width*height));
-
-	
-		//
-		// Optional mask
-		//
-
-	/*	if (!maskFilename.empty())
-		{
-			std::cerr << "Loading mask: " << maskFilename << std::endl;
-			context.setMask(maskFilename.c_str());
-		}*/
-
-		//
-		// Execute query.  Includes time to compile OptiX programs and upload model buffers.
-		//
-
+		context.setHitsDevicePointer(hits_d, size_t(sizeOfInput));
 		context.execute();
 
-		Ray* rays_h = (Ray*)malloc(sizeof(Ray)*width*height);
-		cudaMemcpy(rays_h, rays_d, sizeof(Ray)*width*height ,cudaMemcpyDeviceToHost);
-		std::cout << "Origin: [" << rays_h[0].origin.x << ", " << rays_h[0].origin.y << ", " << rays_h[0].origin.z << "]" << std::endl;
-		std::cout << "Dir: ["<< rays_h[0].dir.x << ", " << rays_h[0].dir.y << ", " << rays_h[0].dir.z << "]" <<std::endl;
+	//	PrintRays(rays_d, sizeOfInput);
+		PrintHits(hits_d, rays_d, sizeOfInput);
 
-		Hit* hits_h = (Hit*)malloc(sizeof(Hit)*width*height);
-		cudaMemcpy(hits_h, hits_d, sizeof(Ray)*width*height, cudaMemcpyDeviceToHost);
-		std::cout << "t: " << hits_h[0].t << std::endl;
-		optix::float3 poi = rays_h[0].origin + hits_h[0].t * rays_h[0].dir;
-		std::cout << "POI: " << poi.x << ", " << poi.y << ", " << poi.z <<  std::endl;
-		std::cout << "triId: " << hits_h[0].triId << std::endl;
-		
-		//
-		// Shade the hit results to create image
-		//
-
-	/*	optix::float3* image_d = NULL;
-		err = cudaMalloc(&image_d, width*height * sizeof(optix::float3));
-		if (err != cudaSuccess)
-		{
-			printf("cudaMalloc failed (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
-			exit(1);
-		}
-
-		std::vector<float3> image_h(width*height);
-
-		shadeHitsOnDevice(image_d, width*height, hits_d);
-		err = cudaGetLastError();
-		if (err != cudaSuccess)
-		{
-			printf("Error while shading hits on device (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
-			exit(1);
-		}
-
-		err = cudaMemcpy(&image_h[0], image_d, (size_t)(width*height) * sizeof(optix::float3), cudaMemcpyDeviceToHost);
-		if (err != cudaSuccess)
-		{
-			printf("cudaMemcpy failed (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
-			exit(1);
-		}
-
-		writePPM("output.ppm", &image_h[0].x, width, height);
-	*/
-		//
-		// Re-execute query with different rays
-		//
-
-	/*	translateRaysOnDevice(rays_d, width*height, bbox_span * optix::make_float3(0.2f, 0, 0));
-		err = cudaGetLastError();
-		if (err != cudaSuccess)
-		{
-			printf("Error while translating rays on device (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
-			exit(1);
-		}
-
-		context.execute();
-
-		shadeHitsOnDevice(image_d, width*height, hits_d);
-		err = cudaGetLastError();
-		if (err != cudaSuccess)
-		{
-			printf("Error while shading hits on device (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
-			exit(1);
-		}
-
-		err = cudaMemcpy(&image_h[0], image_d, (size_t)(width*height) * sizeof(optix::float3), cudaMemcpyDeviceToHost);
-		if (err != cudaSuccess)
-		{
-			printf("cudaMemcpy failed (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
-			exit(1);
-		}
-
-		writePPM("outputTranslated.ppm", &image_h[0].x, width, height);
-		*/
-		// Clean up
+		rays_host.clear();
 		cudaFree(rays_d);
 		cudaFree(hits_d);
-		//cudaFree(image_d);
 	}
 	catch (std::exception& e)
 	{
@@ -299,3 +249,38 @@ int main(int argc, char** argv)
 	return 0;
 }
 
+void PrintRays(Ray* rays_device, int sizeOfInput)
+{
+	Ray* rays_h = (Ray*)malloc(sizeof(Ray)*sizeOfInput);
+	cudaMemcpy(rays_h, rays_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
+	std::cout << "Rays: " << std::endl;
+	for (int i = 0; i < sizeOfInput; i++) {
+		std::cout << "Origin: [" << rays_h[i].origin.x << ", " << rays_h[i].origin.y << ", " << rays_h[i].origin.z << "]\t";
+		std::cout << "Dir: [" << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << "]" << std::endl;
+	}
+	std::cout << std::endl;
+	delete rays_h;
+}
+
+void PrintHits(Hit* hits_device, Ray* rays_device, int sizeOfInput)
+{
+	Ray* rays_h = (Ray*)malloc(sizeof(Ray)*sizeOfInput);
+	cudaMemcpy(rays_h, rays_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
+	Hit* hits_h = (Hit*)malloc(sizeof(Hit)*sizeOfInput);
+	cudaMemcpy(hits_h, hits_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
+	for (int i = 0; i < sizeOfInput; i++) {
+		std::cout << "Origin: [" << rays_h[i].origin.x << ", " << rays_h[i].origin.y << ", " << rays_h[i].origin.z << "]\t";
+		std::cout << "Dir: [" << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << "]\t" << hits_h[i].nhits << std::endl;
+		for (int j = 0; j < NUM_OF_HITS; j++) {
+			if(hits_h[i].t[j] <= 0)
+				continue;
+			std::cout << "t: " << hits_h[i].t[j] << "    triId: " << hits_h[i].triId[j];
+			optix::float3 poi = rays_h[i].origin + hits_h[i].t[j] * rays_h[i].dir;
+			std::cout << "    POI: " << poi.x << ", " << poi.y << ", " << poi.z << std::endl;
+		}
+		std::cout << std::endl;
+	}
+	
+	delete hits_h;
+	delete rays_h;
+}
