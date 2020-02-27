@@ -52,6 +52,9 @@
 #include <string>
 #include <sstream>
 
+std::string input_city_obj_file = "/data/WashingtonDC.obj";
+std::string input_src_detector_file = "/data/input_2.csv";
+std::string output_collision_file = "/data/output.csv";
 
 void printUsageAndExit(const char* argv0)
 {
@@ -68,33 +71,11 @@ void printUsageAndExit(const char* argv0)
 }
 
 
-void writePPM(const char* filename, const float* image, int width, int height)
-{
-	std::ofstream out(filename, std::ios::out | std::ios::binary);
-	if (!out)
-	{
-		std::cerr << "Cannot open file " << filename << "'" << std::endl;
-		return;
-	}
-
-	out << "P6\n" << width << " " << height << "\n255" << std::endl;
-	for (int y = height - 1; y >= 0; --y) // flip vertically
-	{
-		for (int x = 0; x < width * 3; ++x)
-		{
-			float val = image[y*width * 3 + x];
-			unsigned char cval = val < 0.0f ? 0u : val > 1.0f ? 255u : static_cast<unsigned char>(val*255.0f);
-			out.put(cval);
-		}
-	}
-
-	std::cout << "Wrote file " << filename << std::endl;
-}
-
-
 void PrintRays(Ray* rays_device, int sizeOfInput);
 
-void PrintHits(Hit* hit, Ray* rays_device, int sizeOfInput);
+void PrintHits(Hit* hits_device, Ray* rays_device, int sizeOfInput);
+
+void WriteHitsInCSVFile(Hit* hits_device, Ray* rays_device, int size_of_input);
 
 int main(int argc, char** argv)
 {
@@ -130,13 +111,6 @@ int main(int argc, char** argv)
 	}
 
 	// Set default scene with mask if user did not specify scene
-	if (objFilename.empty()) {
-		objFilename = std::string(sutil::samplesDir()) + "/data/fish.obj";
-		if (maskFilename.empty()) {
-			maskFilename = std::string(sutil::samplesDir()) + "/data/fish_mask.ppm";
-		}
-	}
-
 	try {
 
 		//
@@ -147,7 +121,7 @@ int main(int argc, char** argv)
 		//
 		// Create model on host
 		//
-		objFilename = std::string(sutil::samplesDir()) + "/data/WashingtonDC.obj";
+		objFilename = std::string(sutil::samplesDir()) + input_city_obj_file;
 		std::cout << objFilename << std::endl;
 		std::cerr << "Loading model: " << objFilename << std::endl;
 		HostMesh model(objFilename);
@@ -173,7 +147,7 @@ int main(int argc, char** argv)
 		// casting one ray
 
 		// Read rays from inputfile and copy to cuda.
-		std::string filename = std::string(sutil::samplesDir()) + "/data/input.csv";
+		std::string filename = std::string(sutil::samplesDir()) + input_src_detector_file;
 		std::fstream fin;
 		fin.open(filename, std::ios::in);
 		std::vector <std::string> row;
@@ -234,7 +208,8 @@ int main(int argc, char** argv)
 		context.execute();
 
 	//	PrintRays(rays_d, sizeOfInput);
-		PrintHits(hits_d, rays_d, sizeOfInput);
+		//PrintHits(hits_d, rays_d, sizeOfInput);
+		WriteHitsInCSVFile(hits_d, rays_d, sizeOfInput);
 
 		rays_host.clear();
 		cudaFree(rays_d);
@@ -267,7 +242,7 @@ void PrintHits(Hit* hits_device, Ray* rays_device, int sizeOfInput)
 	Ray* rays_h = (Ray*)malloc(sizeof(Ray)*sizeOfInput);
 	cudaMemcpy(rays_h, rays_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
 	Hit* hits_h = (Hit*)malloc(sizeof(Hit)*sizeOfInput);
-	cudaMemcpy(hits_h, hits_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
+	cudaMemcpy(hits_h, hits_device, sizeof(Hit)*sizeOfInput, cudaMemcpyDeviceToHost);
 	for (int i = 0; i < sizeOfInput; i++) {
 		std::cout << "Origin: [" << rays_h[i].origin.x << ", " << rays_h[i].origin.y << ", " << rays_h[i].origin.z << "]\t";
 		std::cout << "Dir: [" << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << "]\t" << hits_h[i].nhits << std::endl;
@@ -279,8 +254,36 @@ void PrintHits(Hit* hits_device, Ray* rays_device, int sizeOfInput)
 			std::cout << "    POI: " << poi.x << ", " << poi.y << ", " << poi.z << std::endl;
 		}
 		std::cout << std::endl;
-	}
+	}	
+	delete hits_h;
+	delete rays_h;
+}
+
+void WriteHitsInCSVFile(Hit* hits_device, Ray* rays_device, int sizeOfInput)
+{
+	Ray* rays_h = (Ray*)malloc(sizeof(Ray)*sizeOfInput);
+	cudaMemcpy(rays_h, rays_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
+	Hit* hits_h = (Hit*)malloc(sizeof(Hit)*sizeOfInput);
+	cudaMemcpy(hits_h, hits_device, sizeof(Hit)*sizeOfInput, cudaMemcpyDeviceToHost);
 	
+	std::fstream csvFile;
+	csvFile.open(std::string(sutil::samplesDir()) + output_collision_file, std::ofstream::out | std::ofstream::trunc);
+	csvFile << "Pair_id(numberOfIntersections), sx, sy, sz, dx, dy, dz, x, y, z, t, triId\n";
+	
+	for (int i = 0; i < sizeOfInput; i++) {
+		for (int j = 0; j < hits_h[i].nhits && j < NUM_OF_HITS; j++) {
+			csvFile << i << "(" << hits_h[i].nhits << "),";
+			csvFile << rays_h[i].origin.x << ", " << rays_h[i].origin.y << ", " << rays_h[i].origin.z << ",";
+			csvFile << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << ",";// << hits_h[i].nhits;
+			if (hits_h[i].t[j] <= 0)
+				continue;
+			optix::float3 poi = rays_h[i].origin + hits_h[i].t[j] * rays_h[i].dir;
+			csvFile << poi.x << ", " << poi.y << ", " << poi.z << ", ";
+			csvFile << hits_h[i].t[j] << "," << hits_h[i].triId[j] << "\n";
+		}
+	}//*/
+
+	csvFile.close();
 	delete hits_h;
 	delete rays_h;
 }

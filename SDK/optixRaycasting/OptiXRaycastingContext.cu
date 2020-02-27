@@ -128,7 +128,6 @@ RT_PROGRAM void any_hit()
 			flag = false;
 		}		
 	}//*/
-	rtPrintf("%d = %d\n", i, hit_attr.triId[0]);
 	rtIgnoreIntersection();	
 }
 
@@ -162,9 +161,6 @@ RT_PROGRAM void ray_gen()
              optix::make_Ray( ray.origin, ray.dir, 1, ray.tmin, ray.tmax ),
              hit_prd );
     hits[ launch_index ] = hit_prd;
-	for(int i = 0; i < NUM_OF_HITS; i++)
-		if(hit_prd.t[i] > 0)
-			rtPrintf("%d: t%d: %f \n", launch_index, i, hit_prd.t[i]);
 }
 
 //------------------------------------------------------------------------------
