@@ -51,6 +51,7 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
+#include <chrono> 
 
 std::string input_city_obj_file = "/data/WashingtonDC.obj";
 std::string input_src_detector_file = "/data/input_2.csv";
@@ -79,6 +80,7 @@ void WriteHitsInCSVFile(Hit* hits_device, Ray* rays_device, int size_of_input);
 
 int main(int argc, char** argv)
 {
+	auto start = std::chrono::high_resolution_clock::now();
 	std::string objFilename;
 	std::string maskFilename;
 	int width = 640;
@@ -122,8 +124,7 @@ int main(int argc, char** argv)
 		// Create model on host
 		//
 		objFilename = std::string(sutil::samplesDir()) + input_city_obj_file;
-		std::cout << objFilename << std::endl;
-		std::cerr << "Loading model: " << objFilename << std::endl;
+		std::cerr << "1. Loading model.. " << std::endl;
 		HostMesh model(objFilename);
 		context.setTriangles(model.num_triangles, model.tri_indices, model.num_vertices, model.positions,
 			model.has_texcoords ? model.texcoords : NULL);
@@ -147,6 +148,8 @@ int main(int argc, char** argv)
 		// casting one ray
 
 		// Read rays from inputfile and copy to cuda.
+		std::cout << "2. Loading Src detector file.." << std::endl;
+		
 		std::string filename = std::string(sutil::samplesDir()) + input_src_detector_file;
 		std::fstream fin;
 		fin.open(filename, std::ios::in);
@@ -171,7 +174,8 @@ int main(int argc, char** argv)
 			rays_host.push_back(r);
 		}
 		fin.close();
-		// Copy to cuda
+		
+		std::cout << "3. Sending rays to the device.." << std::endl;
 		Ray* rays_d = NULL;
 		int sizeOfInput = rays_host.size();	
 		err = cudaMalloc((void**)&rays_d, sizeof(Ray)*sizeOfInput);
@@ -187,6 +191,7 @@ int main(int argc, char** argv)
 		context.setRaysDevicePointer(rays_d, size_t(sizeOfInput));
 
 		//////////////////Init hits/////////////////////////
+		std::cout << "4. Initializing hits on the device.." << std::endl;
 		Hit h;
 		for(int i = 0; i < NUM_OF_HITS; i++)
 		{
@@ -195,20 +200,20 @@ int main(int argc, char** argv)
 		h.nhits = 1;
 		
 		Hit* hits_d = NULL;
-		std::cout << "h size: " << sizeof(h) << std::endl;
 		err = cudaMalloc(&hits_d, sizeof(Hit)*sizeOfInput);
-		std::cout << "hits_d size: " << sizeof(Hit)*sizeOfInput << std::endl;
-
 		if (err != cudaSuccess)
 		{
 			printf("cudaMalloc failed (%s): %s\n", cudaGetErrorName(err), cudaGetErrorString(err));
 			exit(1);
 		}
 		context.setHitsDevicePointer(hits_d, size_t(sizeOfInput));
+
+		std::cout << "5. Ray Tracing on the device.." << std::endl;
 		context.execute();
 
 	//	PrintRays(rays_d, sizeOfInput);
-		//PrintHits(hits_d, rays_d, sizeOfInput);
+	//	PrintHits(hits_d, rays_d, sizeOfInput);
+		std::cout << "6. Writing the hits into a CSV file.." << std::endl;
 		WriteHitsInCSVFile(hits_d, rays_d, sizeOfInput);
 
 		rays_host.clear();
@@ -220,7 +225,12 @@ int main(int argc, char** argv)
 		std::cerr << e.what() << std::endl;
 		exit(1);
 	}
+	auto stop = std::chrono::high_resolution_clock::now();
 
+	std::cout << "\n*********** All Done ***********" << std::endl;
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+	std::cout << "** Exec Time: " << duration.count()/1000000.0 << "seconds **" << std::endl;
+	std::cout << "*********** All Done ***********" << std::endl;
 	return 0;
 }
 
@@ -228,7 +238,6 @@ void PrintRays(Ray* rays_device, int sizeOfInput)
 {
 	Ray* rays_h = (Ray*)malloc(sizeof(Ray)*sizeOfInput);
 	cudaMemcpy(rays_h, rays_device, sizeof(Ray)*sizeOfInput, cudaMemcpyDeviceToHost);
-	std::cout << "Rays: " << std::endl;
 	for (int i = 0; i < sizeOfInput; i++) {
 		std::cout << "Origin: [" << rays_h[i].origin.x << ", " << rays_h[i].origin.y << ", " << rays_h[i].origin.z << "]\t";
 		std::cout << "Dir: [" << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << "]" << std::endl;
@@ -268,13 +277,13 @@ void WriteHitsInCSVFile(Hit* hits_device, Ray* rays_device, int sizeOfInput)
 	
 	std::fstream csvFile;
 	csvFile.open(std::string(sutil::samplesDir()) + output_collision_file, std::ofstream::out | std::ofstream::trunc);
-	csvFile << "Pair_id(numberOfIntersections), sx, sy, sz, dx, dy, dz, x, y, z, t, triId\n";
+	csvFile << "Pair_id(#), sx, sy, sz, dx, dy, dz, x, y, z, t, triId\n";
 	
 	for (int i = 0; i < sizeOfInput; i++) {
 		for (int j = 0; j < hits_h[i].nhits && j < NUM_OF_HITS; j++) {
 			csvFile << i << "(" << hits_h[i].nhits << "),";
 			csvFile << rays_h[i].origin.x << ", " << rays_h[i].origin.y << ", " << rays_h[i].origin.z << ",";
-			csvFile << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << ",";// << hits_h[i].nhits;
+			csvFile << rays_h[i].dir.x << ", " << rays_h[i].dir.y << ", " << rays_h[i].dir.z << ",";
 			if (hits_h[i].t[j] <= 0)
 				continue;
 			optix::float3 poi = rays_h[i].origin + hits_h[i].t[j] * rays_h[i].dir;

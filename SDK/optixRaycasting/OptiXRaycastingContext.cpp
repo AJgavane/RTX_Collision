@@ -139,7 +139,6 @@ void OptiXRaycastingContext::setMask( const char* texture_filename )
 
 void OptiXRaycastingContext::setRaysDevicePointer( const Ray* rays, size_t n )
 {
-	std::cout << "Size of Rays: " << n << std::endl;
   if ( m_rays ) m_rays->destroy();
   m_rays = m_context->createBuffer( RT_BUFFER_INPUT_OUTPUT | RT_BUFFER_GPU_LOCAL, RT_FORMAT_USER, n );
   m_rays->setElementSize( sizeof(Ray) );
@@ -149,7 +148,6 @@ void OptiXRaycastingContext::setRaysDevicePointer( const Ray* rays, size_t n )
 
 void OptiXRaycastingContext::setHitsDevicePointer( Hit* hits, size_t n )
 {
-	std::cout << "Size of Hit: " << sizeof(Hit) << std::endl;
   if ( m_hits ) m_hits->destroy();
   m_hits = m_context->createBuffer( RT_BUFFER_INPUT_OUTPUT | RT_BUFFER_GPU_LOCAL, RT_FORMAT_USER, n );
   m_hits->setElementSize( sizeof(Hit) );

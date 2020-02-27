@@ -29,6 +29,9 @@
 #pragma once
 
 #include <optixu/optixu_math_namespace.h>
+
+// If any of the source detector has 20 hit counts, then increase this number and rerun the program
+// Maximum number of hits recorded per src-detector pair.
 #define NUM_OF_HITS 20
 
 //
